@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- stable
+script:
+- npm run build
+deploy:
+  provider: heroku
+  app: ultraton
+  api_key:
+    secure: SWPvlhhQHtJYjOJ18ZTSNQjJxAH2uooAhePDkJE7sPd4vJ0ieQje1RZnam4eynmAAHbGuV/ZDOEexz/KEYFZf/X4hqKTVdVX1cUsiE8VkoEefM+EB3to7VMt6wEJDdn8J4/8blwz1KvqdZHfn2Sc5I0yPZWgqiTNlhgqV56aqKNSPOhdek+X7WEhBOIi50mcmEdwtY7U5Gwbu0V2x02KeZN26yUZaNsy/sPRL+IJukP7/KRHYNto6AbghdyWQF/rCBG1vuqHa0fuidPceUqEC69xGJDqVR32MKdxGRnGZ95T7J1Rrr5vDFADoVcTScBTMByVTz+eAcQUKcnhQnPFLY9TDefrWpzLeMXAQk+lHTBxnhY7FXDV7QjkS+jMRCaHIeHpA4CBbPUQb9yHiok2QbpZGqT7cvG4sGX7w0ddeI+9VfLJUCrh+SmT88mewzbhN0VIe1A1zMBxgK65BFp1yJUWdyeevgdu7+UPxWfPxO3dxvc5UWpgV1VavsvjQLtR724c05d/QAqgCRVZpFp1qAG1T24GszsMZ63DDfX+w5TdU6qfmqIglTcYpeEzQYJjepXStqL8qBEziR2xyMVqeBz/cCejkqm9STYj1wjysLYKCpyeOqWvLwAXVjo0vSQqErUdqkj2Q6O0xZoQYxKgB2QaeclRDMqhm7FwzHCdrV0=
+  on: master
