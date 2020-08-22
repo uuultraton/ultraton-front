@@ -9,6 +9,7 @@ send_msg() {
 
 send_msg "
 -------------------------------------
+UltraTon-FE
 Repository:  https://github.com/${TRAVIS_REPO_SLUG}
 Heroku:  ${HEROKU_URL}
 
