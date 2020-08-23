@@ -2,6 +2,9 @@ language: node_js
 node_js:
   - stable
 
+script:
+  - npm run build
+
 after_script:
   - bash scripts/telegram_notification.sh
 
