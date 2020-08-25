@@ -20,63 +20,79 @@ const RegistrationForm = (): JSX.Element => {
   const [alertLastName, toggleAlertLastName] = useState(false);
   const [alertEmail, toggleAlertEmail] = useState(false);
   const [alertPassword, toggleAlertPassword] = useState(false);
-  const [isFormValidated, changeFormValidationState] = useState(false);
   const [errorAlert, toggleErrorAlert] = useState(false);
-
-  const handleSubmit = (): void => {
+  const [errorMessage, changeErrorMessage] = useState(
+    'Registration was failed',
+  );
+  const [loggedIn, toggleLogin] = useState(false);
+  const clearForm = (): void => {
+    changeFirstName('');
+    changeLastName('');
+    changeEmail('');
+    changePassword('');
+    changePassword('');
+    changeErrorMessage('');
+    toggleAlertFirstName(false);
+    toggleAlertLastName(false);
+    toggleAlertPassword(false);
+    toggleAlertEmail(false);
+    toggleErrorAlert(false);
+  };
+  const validateForm = (): boolean => {
     const validatedFirstName = validateFirstCredentialField(firstName);
     if (!validatedFirstName) {
       toggleAlertFirstName(true);
-      changeFormValidationState(false);
-      return;
+      return false;
     }
     toggleAlertFirstName(false);
 
     const validateLastName = validateFirstCredentialField(lastName);
     if (!validateLastName) {
       toggleAlertLastName(true);
-      changeFormValidationState(false);
-      return;
+      return false;
     }
     toggleAlertLastName(false);
 
     const validatedPassword = validatePassword(password);
     if (!validatedPassword) {
       toggleAlertPassword(false);
-      changeFormValidationState(false);
-      return;
+      return false;
     }
     toggleAlertPassword(false);
 
     const validatedEmail = validateEmail(email);
     if (!validatedEmail) {
       toggleAlertEmail(false);
-      changeFormValidationState(false);
-      return;
+      return false;
     }
     toggleAlertEmail(false);
-
-    changeFormValidationState(true);
+    return true
   };
 
-  useEffect(() => {
-    if (isFormValidated) {
+  const handleClick = () => {
+   const validated = validateForm();
+    if(validated) {
       API.post('auth/signup', { firstName, lastName, email, password }).then(
         ({ data }: AxiosResponse<IRegistrationResponse>) => {
           if (!data.success) {
-            return toggleErrorAlert(true);
+            changeErrorMessage(data.message);
+            toggleErrorAlert(true);
+          } else {
+            toggleErrorAlert(false);
+            toggleLogin(true);
           }
-          toggleErrorAlert(false);
-          return <Redirect to="/login" />;
         },
       );
     }
-  }, [isFormValidated, email, lastName, firstName, password]);
+  };
+
+  if (loggedIn) {
+    return <Redirect to="/login" />;
+  }
   return (
     <Container>
       <div className="registration__inner">
         <TextField
-          id="standard-basic"
           name="firstName"
           label="First name"
           required
@@ -90,7 +106,6 @@ const RegistrationForm = (): JSX.Element => {
           ) => changeFirstName(event.target.value)}
         />
         <TextField
-          id="standard-basic"
           name="lastName"
           label="Last name"
           required
@@ -103,7 +118,6 @@ const RegistrationForm = (): JSX.Element => {
           ) => changeLastName(event.target.value)}
         />
         <TextField
-          id="standard-basic"
           name="password"
           label="Password"
           type="password"
@@ -117,7 +131,6 @@ const RegistrationForm = (): JSX.Element => {
           ) => changePassword(event.target.value)}
         />
         <TextField
-          id="standard-basic"
           name="email"
           label="Email"
           type="email"
@@ -130,12 +143,12 @@ const RegistrationForm = (): JSX.Element => {
             event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
           ) => changeEmail(event.target.value)}
         />
-        {errorAlert && <Alert severity="error">Registration failed!</Alert>}
+        {errorAlert && <Alert severity="error">{errorMessage}</Alert>}
         <div className="registration__buttons">
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={clearForm}>
             Clear
           </Button>
-          <Button variant="contained" color="primary" onClick={handleSubmit}>
+          <Button variant="contained" color="primary" onClick={handleClick}>
             Submit
           </Button>
         </div>
