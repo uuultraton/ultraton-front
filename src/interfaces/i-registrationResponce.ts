@@ -1,6 +1,5 @@
-import IServerResponse from './i-serverResponse';
+import { IServerResponse } from './i-serverResponse';
 
-interface IRegistrationResponse extends IServerResponse {
+export interface IRegistrationResponse extends IServerResponse {
   payload: null;
 }
-export default IRegistrationResponse;
