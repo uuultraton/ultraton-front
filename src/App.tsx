@@ -9,8 +9,8 @@ import Routes from './routes';
 function App() {
   return (
     <div className="App">
-    {/* <Provider store={store}> */}
-      <Routes></Routes>
+      {/* <Provider store={store}> */}
+      <Routes />
       {/* </Provider> */}
     </div>
   );
