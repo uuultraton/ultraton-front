@@ -1,10 +1,17 @@
 import React from 'react';
 import './App.scss';
 
+import Routes from './routes';
+
+// import { Provider } from 'react-redux';
+// import { store } from './stores';
+
 function App() {
   return (
     <div className="App">
-      <p>app works!</p>
+    {/* <Provider store={store}> */}
+      <Routes></Routes>
+      {/* </Provider> */}
     </div>
   );
 }
