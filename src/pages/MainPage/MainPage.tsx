@@ -5,7 +5,7 @@ import RegistrationForm from '../../components/molecules/RegistrationForm/Regist
 function MainPage() {
   return (
     <div className="main-page">
-      <RegistrationForm/>
+      <RegistrationForm />
     </div>
   );
 }
