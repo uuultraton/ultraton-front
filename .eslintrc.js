@@ -51,6 +51,7 @@ module.exports = {
     'class-methods-use-this': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'no-use-before-define': 'off',
+    '@typescript-eslint/ban-types': 'off',
   },
   settings: {
     react: {
