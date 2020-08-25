@@ -52,6 +52,8 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'no-use-before-define': 'off',
     '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    'consistent-return': 'off',
   },
   settings: {
     react: {
