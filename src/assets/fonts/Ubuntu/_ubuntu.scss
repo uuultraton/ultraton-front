@@ -1,7 +1,6 @@
 @font-face {
   font-family: 'Ubuntu-Light';
-  src: local('Ubuntu-Light'),
-  url(./Ubuntu-Light.ttf) format('truetype');
+  src: local('Ubuntu-Light'), url(./Ubuntu-Light.ttf) format('truetype');
 }
 
 @font-face {
@@ -26,27 +25,18 @@
 
 @font-face {
   font-family: 'Ubuntu-LightItalic';
-  src: local('Ubuntu-LightItalic'), url(./Ubuntu-LightItalic.ttf) format('truetype');
+  src: local('Ubuntu-LightItalic'),
+    url(./Ubuntu-LightItalic.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'Ubuntu-MediumItalic';
   src: local('Ubuntu-MediumItalic'),
-  url(./Ubuntu-MediumItalic.ttf) format('truetype');
+    url(./Ubuntu-MediumItalic.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'Ubuntu-BoldItalic';
   src: local('Ubuntu-BoldItalic'),
-  url(./Ubuntu-BoldItalic.ttf) format('truetype');
+    url(./Ubuntu-BoldItalic.ttf) format('truetype');
 }
-
-
-
-
-
-
-
-
-
-

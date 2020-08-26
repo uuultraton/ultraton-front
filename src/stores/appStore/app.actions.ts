@@ -7,3 +7,6 @@ export const openModal = (): IAppAction => {
 export const hideModal = (): IAppAction => {
   return { type: AppTypes.HIDE_MODAL };
 };
+export const finishDirectionStage = (): IAppAction => {
+  return {type: AppTypes.FINISH_DIRECTION}
+};

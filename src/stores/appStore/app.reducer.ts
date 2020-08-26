@@ -1,9 +1,10 @@
 import { IAppStore } from '../../interfaces/i-app-store';
 import { IAppReducerProps } from '../../interfaces/i-app-reducer-props';
-import {AppTypes} from './app.types';
+import { AppTypes } from './app.types';
 
 const initialState = {
   isModalOpen: false,
+  isUserFinishedDirection: false,
 };
 
 const appReducer = (
@@ -16,6 +17,8 @@ const appReducer = (
     case AppTypes.HIDE_MODAL: {
       return { ...state, isModalOpen: false };
     }
+    case AppTypes.FINISH_DIRECTION:
+      return { ...state, isUserFinishedDirection: true };
     default:
       return { ...state };
   }

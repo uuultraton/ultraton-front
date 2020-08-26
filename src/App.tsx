@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import Header from './components/organisms/Header/Header';
@@ -12,7 +12,6 @@ import ProfilePage from './pages/ProfilePage/ProfilePage';
 import store from './stores/store';
 import Registration from './pages/Registration/Registration';
 import Footer from './components/organisms/Footer/Footer';
-
 
 function App() {
   return (

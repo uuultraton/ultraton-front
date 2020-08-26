@@ -86,4 +86,5 @@ class Mario extends React.Component<IMarioProps, IMarioState> {
     );
   }
 }
+
 export default Mario;
