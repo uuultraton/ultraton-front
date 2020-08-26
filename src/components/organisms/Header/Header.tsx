@@ -147,9 +147,6 @@ export default function Header() {
                 <MenuItem onClick={handleHome}>Home</MenuItem>
                 <MenuItem onClick={handleProfile}>Profile</MenuItem>
                 <MenuItem onClick={handlePlay}>Play</MenuItem>
-                <MenuItem onClick={() => history.push('/modal')}>
-                  Modal
-                </MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </div>
