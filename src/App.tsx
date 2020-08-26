@@ -6,6 +6,7 @@ import Header from './components/organisms/Header/Header';
 
 import MainPage from './pages/MainPage/MainPage';
 import LogIn from './pages/LogIn/LogIn';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 import RegistrationForm from './components/molecules/RegistrationForm/RegistrationForm';
 
 // import { Provider } from 'react-redux';
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/" component={MainPage} />
           <Route path="/login" component={LogIn} />
           <Route path="/register" component={RegistrationForm} />
+          <Route path="/profile" component={ProfilePage} />
         </Switch>
       </Router>
 
