@@ -13,11 +13,11 @@ class Mario extends React.Component<IMarioProps, IMarioState> {
   private jumpingMario =
     'https://raw.githubusercontent.com/fabiopaiva/react-super-mario/develop/src/react-super-mario/assets/players/mario-jumping.gif';
 
-  constructor({ changeMarioJumpCords }: IMarioProps) {
-    super({ changeMarioJumpCords });
+  constructor(props: IMarioProps) {
+    super(props);
     this.state = {
       left: 100,
-      top: 85,
+      top: 77,
       isMoving: false,
       isJumping: false,
     };
@@ -45,7 +45,7 @@ class Mario extends React.Component<IMarioProps, IMarioState> {
         ...state,
         isJumping: true,
         isMoving: false,
-        top: 70,
+        top: 62,
       }));
       this.props.changeMarioJumpCords(this.state.left);
     }
@@ -63,7 +63,7 @@ class Mario extends React.Component<IMarioProps, IMarioState> {
         ...state,
         isJumping: false,
         isMoving: false,
-        top: 85,
+        top: 77,
       }));
     }
   };

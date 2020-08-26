@@ -4,14 +4,16 @@ import './ModalWindow.scss';
 import Modal from '@material-ui/core/Modal';
 import { Button, createStyles, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { connect, useDispatch } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { IModalWindowProps } from '../../../interfaces/i-modal-window-props';
 import { hideModal } from '../../../stores/appStore/app.actions';
+import { IRootStore } from '../../../interfaces/i-root-store';
 
 const ModalWindow = ({ open, direction }: IModalWindowProps): JSX.Element => {
   const rootPortal: HTMLElement = document.getElementById(
     'portal-root',
   ) as HTMLElement;
+  const {isModalOpen} = useSelector((store: IRootStore) => store.app);
   const dispatch = useDispatch();
   const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -37,9 +39,7 @@ const ModalWindow = ({ open, direction }: IModalWindowProps): JSX.Element => {
       <div className={classes.paper}>
         <h2 id="simple-modal-title">Direction was chosen!</h2>
         <p id="simple-modal-description">
-          Are you sure, that you want to learn
-          {direction}
-          direction?
+          Are you sure, that you want to learn {direction}  direction?
         </p>
         <div className="simple-modal__buttons">
           <Button
