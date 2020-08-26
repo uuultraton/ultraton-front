@@ -1,5 +1,8 @@
 import { IBlock } from './i-block';
 
 export interface IDirectionsResponse {
-  data: IBlock[]
+  success: boolean;
+  payload: string[],
+  status: number,
+  message: string
 }

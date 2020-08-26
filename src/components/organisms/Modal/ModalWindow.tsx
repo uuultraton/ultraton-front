@@ -10,7 +10,7 @@ import {
   finishDirectionStage,
   hideModal,
 } from '../../../stores/appStore/app.actions';
-import { fetchSkillMatrix } from '../../../stores/skills/skills.actions';
+import { fetchSkillMatrix } from '../../../stores/skillsStore/skills.actions';
 import { IRootStore } from '../../../interfaces/i-root-store';
 
 const ModalWindow = ({ open }: IModalWindowProps): JSX.Element => {

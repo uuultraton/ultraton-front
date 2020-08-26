@@ -9,6 +9,7 @@ export const fetchDirections = (): ISkillsActions => {
   return { type: SkillsTypes.FETCH_DIRECTIONS };
 };
 export const updateDirections = (data: IBlock[]): ISkillsActions => {
+  console.log('from action', data);
   return { type: SkillsTypes.UPDATE_DIRECTIONS, payload: data };
 };
 export const showSkills = (data: IBlock[]): ISkillsActions => {

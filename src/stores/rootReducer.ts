@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import appReducer from './appStore/app.reducer';
-import skillsReducer from './skills/skills.reducer';
+import skillsReducer from './skillsStore/skills.reducer';
 
 const rootReducer = combineReducers({
   app: appReducer,

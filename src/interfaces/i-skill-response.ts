@@ -1,5 +1,8 @@
+import { ISkill } from './i-skill';
+
 export interface ISkillResponse {
-  parent: string;
-  technologie: string;
-  name:string;
+  message: string;
+  payload: ISkill[];
+  status: number;
+  success: boolean;
 }

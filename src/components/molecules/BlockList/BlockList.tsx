@@ -12,7 +12,7 @@ import { openModal } from '../../../stores/appStore/app.actions';
 import {
   fetchDirections,
   selectBlock,
-} from '../../../stores/skills/skills.actions';
+} from '../../../stores/skillsStore/skills.actions';
 
 class BlockList extends React.Component<IBlocklistProps, IBlockListState> {
   constructor(props: IBlocklistProps) {
@@ -22,7 +22,9 @@ class BlockList extends React.Component<IBlocklistProps, IBlockListState> {
       blockWidth: 150,
     };
   }
-
+calcElementsPositions = (elements:IBlock[]) => {
+  return elements.map( (element:IBlock) => element.posLeft = window.innerWidth/elements.length + this.state.blockWidth  )
+};
   componentDidMount(): void {
     if (!this.state.isLoaded) {
       this.props.fetchDirections();
