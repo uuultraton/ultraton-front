@@ -1,6 +1,6 @@
-import { IAppAction } from './i-app-action';
 import { IBlock } from './i-block';
+import IAction from './i-action';
 
-export interface ISkillsActions extends IAppAction {
+export interface ISkillsActions extends IAction {
   payload?: IBlock[];
 }
