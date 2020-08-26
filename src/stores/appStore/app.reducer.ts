@@ -1,6 +1,6 @@
 import { IAppStore } from '../../interfaces/i-app-store';
 import { IAppReducerProps } from '../../interfaces/i-app-reducer-props';
-import { AppTypes } from './app.types';
+import {AppTypes} from './app.types';
 
 const initialState = {
   isModalOpen: false,
