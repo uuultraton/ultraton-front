@@ -13,6 +13,7 @@ export default class ThemeSwitcher extends React.Component<
     aboutBgColor: 'white',
     image:
       'url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/17775966002101.5d0713b833074.gif")',
+    MarioBgImage: 'url("https://i.imgur.com/3KjQURW.gif")',
   };
 
   lightTheme = {
@@ -23,6 +24,8 @@ export default class ThemeSwitcher extends React.Component<
     aboutBgColor: 'black',
     image:
       'url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/cc9f6566002101.5d0713b833226.gif")',
+    MarioBgImage:
+      'url("https://www.9to5animations.com/wp-content/uploads/2016/03/mario-gif-animated.gif")',
   };
 
   constructor(props: any) {
@@ -44,6 +47,7 @@ export default class ThemeSwitcher extends React.Component<
     root.style.setProperty('--active-color', theme.activeColor);
     root.style.setProperty('--about-bg-color', theme.aboutBgColor);
     root.style.setProperty('--image', theme.image);
+    root.style.setProperty('--MarioBgImage', theme.MarioBgImage);
   }
 
   render() {

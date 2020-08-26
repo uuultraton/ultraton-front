@@ -9,10 +9,10 @@ import { IRootStore } from '../../interfaces/i-root-store';
 
 const PlayToLearn = (): JSX.Element => {
   const [marioJumpCord, changeMarioJumpCords] = useState(100);
-  const {isModalOpen} = useSelector((store:IRootStore) => store.app);
+  const { isModalOpen } = useSelector((store: IRootStore) => store.app);
   return (
-    <Container>
-      <BlockList marioJumpCord={marioJumpCord} isModalOpen={isModalOpen}/>
+    <Container className="game-wrapper">
+      <BlockList marioJumpCord={marioJumpCord} isModalOpen={isModalOpen} />
       <Mario changeMarioJumpCords={changeMarioJumpCords} />
       <MariosRoad />
     </Container>
