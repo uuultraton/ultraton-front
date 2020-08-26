@@ -46,9 +46,7 @@ class BlockList extends React.Component<IBlocklistProps, IBlockListState> {
           this.props.marioJumpCord <= posLeft + this.state.blockWidth;
         if (isMarioInBlock) {
           this.setState((prev) => ({ ...prev, selectedBlock: name }));
-          console.log('prev state', prevProps)
-          console.log('curr state', this.props)
-          this.props.openModal();
+          setTimeout(()=> this.props.openModal(),500)
         }
         return { name, posLeft };
       });
