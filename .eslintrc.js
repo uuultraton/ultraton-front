@@ -54,6 +54,7 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'consistent-return': 'off',
+    'react/destructuring-assignment': 'off',
   },
   settings: {
     react: {
