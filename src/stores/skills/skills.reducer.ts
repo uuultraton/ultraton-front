@@ -4,6 +4,7 @@ import { SkillsTypes } from './skills.types';
 
 const initialState = {
   blocks: [],
+  selectedBlock: []
 };
 
 const skillsReducer = (
@@ -15,6 +16,8 @@ const skillsReducer = (
       return { ...state, blocks: payload };
     case SkillsTypes.SHOW_SKILLS:
       return { ...state, blocks: payload };
+    case SkillsTypes.SELECT_BLOCK:
+      return {...state, selectedBlock: payload}
     default:
       return { ...state };
   }

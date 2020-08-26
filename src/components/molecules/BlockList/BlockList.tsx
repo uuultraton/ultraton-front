@@ -9,13 +9,15 @@ import { IRootStore } from '../../../interfaces/i-root-store';
 import { IBlockListState } from '../../../interfaces/i-block-list-state';
 import { IBlock } from '../../../interfaces/i-block';
 import { openModal } from '../../../stores/appStore/app.actions';
-import { fetchDirections } from '../../../stores/skills/skills.actions';
+import {
+  fetchDirections,
+  selectBlock,
+} from '../../../stores/skills/skills.actions';
 
 class BlockList extends React.Component<IBlocklistProps, IBlockListState> {
   constructor(props: IBlocklistProps) {
     super(props);
     this.state = {
-      selectedBlock: '',
       isLoaded: false,
       blockWidth: 150,
     };
@@ -36,17 +38,20 @@ class BlockList extends React.Component<IBlocklistProps, IBlockListState> {
     prevState: Readonly<IBlockListState>,
     snapshot?: any,
   ): void {
-    if(prevProps.isModalOpen !== this.props.isModalOpen || this.props.isUserFinishedDirection) {
-      return
+    if (
+      prevProps.isModalOpen !== this.props.isModalOpen ||
+      this.props.isUserFinishedDirection
+    ) {
+      return;
     }
-    if (prevState === this.state ) {
+    if (!(prevProps.marioJumpCord === this.props.marioJumpCord)) {
       this.props.blocks.map(({ name, posLeft }: IBlock) => {
         const isMarioInBlock =
           this.props.marioJumpCord >= posLeft &&
           this.props.marioJumpCord <= posLeft + this.state.blockWidth;
         if (isMarioInBlock) {
-          this.setState((prev) => ({ ...prev, selectedBlock: name }));
-          setTimeout(()=> this.props.openModal(),500)
+          this.props.selectBlock([{ name, posLeft }]);
+          setTimeout(() => this.props.openModal(), 500);
         }
         return { name, posLeft };
       });
@@ -64,10 +69,7 @@ class BlockList extends React.Component<IBlocklistProps, IBlockListState> {
             key={uuidv4()}
           />
         ))}
-        <ModalWindow
-          open={this.props.isModalOpen}
-          direction={this.state.selectedBlock}
-        />
+        <ModalWindow open={this.props.isModalOpen} />
       </div>
     );
   }
@@ -81,6 +83,9 @@ const mapDispatchToProps = (dispatch: any) => {
     fetchDirections: () => {
       dispatch(fetchDirections());
     },
+    selectBlock: (block: IBlock[]) => {
+      dispatch(selectBlock(block));
+    },
   };
 };
 
@@ -88,6 +93,7 @@ const mapStateToProps = (store: IRootStore) => {
   return {
     isUserFinishedDirection: store.app.isUserFinishedDirection,
     blocks: store.skills.blocks,
+    selectedBlock: store.skills.selectedBlock,
   };
 };
 

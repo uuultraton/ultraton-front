@@ -5,6 +5,8 @@ export interface IBlocklistProps {
   isModalOpen: boolean;
   openModal: () => void;
   fetchDirections: () => void;
+  selectBlock: (block:IBlock[]) => void;
+  selectedBlock: IBlock[];
   blocks: IBlock[];
   isUserFinishedDirection: boolean
 }

@@ -7,22 +7,15 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
-import ReactDOM from 'react-dom';
 import './SkillsModalWindow.scss';
 import { connect, useDispatch } from 'react-redux';
-import { IModalWindowProps } from '../../../interfaces/i-modal-window-props';
 import {
   finishDirectionStage,
   hideModal,
 } from '../../../stores/appStore/app.actions';
-import { fetchSkillMatrix } from '../../../stores/skills/skills.actions';
 
-const SkillsModalWindow = ({ direction }: IModalWindowProps): JSX.Element => {
-  const rootPortal: HTMLElement = document.getElementById(
-    'portal-root',
-  ) as HTMLElement;
+const SkillsModalWindow = (): JSX.Element => {
   const dispatch = useDispatch();
-
   const useStyles = makeStyles((theme: Theme) =>
     createStyles({
       root: {
@@ -76,7 +69,7 @@ const SkillsModalWindow = ({ direction }: IModalWindowProps): JSX.Element => {
 
   const handleYes = () => {
     dispatch(finishDirectionStage());
-    dispatch(fetchSkillMatrix());
+    // dispatch(fetchSkillMatrix());
     dispatch(hideModal());
   };
 

@@ -4,20 +4,21 @@ import './ModalWindow.scss';
 import Modal from '@material-ui/core/Modal';
 import { Button, createStyles, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { connect, useDispatch } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { IModalWindowProps } from '../../../interfaces/i-modal-window-props';
 import {
   finishDirectionStage,
   hideModal,
 } from '../../../stores/appStore/app.actions';
 import { fetchSkillMatrix } from '../../../stores/skills/skills.actions';
+import { IRootStore } from '../../../interfaces/i-root-store';
 
-const ModalWindow = ({ open, direction }: IModalWindowProps): JSX.Element => {
+const ModalWindow = ({ open }: IModalWindowProps): JSX.Element => {
   const rootPortal: HTMLElement = document.getElementById(
     'portal-root',
   ) as HTMLElement;
   const dispatch = useDispatch();
-
+const {selectedBlock} = useSelector((store:IRootStore)=> store.skills);
   const useStyles = makeStyles((theme: Theme) =>
     createStyles({
       paper: {
@@ -35,7 +36,7 @@ const ModalWindow = ({ open, direction }: IModalWindowProps): JSX.Element => {
 
   const handleYes = () => {
     dispatch(finishDirectionStage());
-    dispatch(fetchSkillMatrix());
+    dispatch(fetchSkillMatrix(selectedBlock));
     dispatch(hideModal());
   };
   return ReactDOM.createPortal(
@@ -46,11 +47,9 @@ const ModalWindow = ({ open, direction }: IModalWindowProps): JSX.Element => {
     >
       <div className={classes.paper}>
         <h2 id="simple-modal-title">Direction was chosen!</h2>
-        <p id="simple-modal-description">
-          Are you sure, that you want to learn
-          {direction}
-          direction?
-        </p>
+       {selectedBlock[0] && <p id="simple-modal-description">
+          Are you sure, that you want to learn {selectedBlock[0].name}  direction?
+        </p>}
         <div className="simple-modal__buttons">
           <Button
             variant="contained"
