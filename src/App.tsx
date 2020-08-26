@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './components/organisms/Header/Header';
 
 import MainPage from './pages/MainPage/MainPage';
-import Footer from './components/organisms/Footer/Footer';
 import LogIn from './pages/LogIn/LogIn';
 import RegistrationForm from './components/molecules/RegistrationForm/RegistrationForm';
 
@@ -23,7 +22,6 @@ function App() {
           <Route path="/login" component={LogIn} />
           <Route path="/register" component={RegistrationForm} />
         </Switch>
-        <Footer />
       </Router>
 
       {/* </Provider> */}

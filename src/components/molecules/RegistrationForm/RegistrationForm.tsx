@@ -66,12 +66,12 @@ const RegistrationForm = (): JSX.Element => {
       return false;
     }
     toggleAlertEmail(false);
-    return true
+    return true;
   };
 
   const handleClick = () => {
-   const validated = validateForm();
-    if(validated) {
+    const validated = validateForm();
+    if (validated) {
       API.post('auth/signup', { firstName, lastName, email, password }).then(
         ({ data }: AxiosResponse<IRegistrationResponse>) => {
           if (!data.success) {
