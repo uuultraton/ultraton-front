@@ -2,7 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import './LogIn.scss';
 import { Button, Container, TextField } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { AxiosResponse } from 'axios';
 import validatePassword from '../../helpers/validatePassword';
 import validateEmail from '../../helpers/validateEmail';
@@ -11,6 +11,7 @@ import API from '../../helpers/api';
 import IRegistrationResponse from '../../interfaces/i-registrationResponce';
 
 const LogIn = (): JSX.Element => {
+  const history = useHistory();
   const [email, changeEmail] = useState('');
   const [password, changePassword] = useState('');
   const [isFormValidated, changeFormValidationState] = useState(false);
@@ -64,7 +65,8 @@ const LogIn = (): JSX.Element => {
   }, [isFormValidated]);
 
   if (routeRedirect) {
-    return <Redirect to="/" />;
+    history.push('/play_to_learn');
+    window.location.reload();
   }
 
   return (
