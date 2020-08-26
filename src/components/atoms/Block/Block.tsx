@@ -7,7 +7,7 @@ const Block = ({ blockWidth, posLeft, name }: IBlockProps): JSX.Element => {
     <div
       style={{
         width: `${blockWidth}px`,
-        top: '55%',
+        top: '47%',
         left: posLeft,
       }}
       className="directions__item"
