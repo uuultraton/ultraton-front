@@ -13,6 +13,7 @@ import store from './stores/store';
 import Registration from './pages/Registration/Registration';
 import Footer from './components/organisms/Footer/Footer';
 
+
 function App() {
   return (
     <div className="App">
