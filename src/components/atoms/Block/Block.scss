@@ -1,0 +1,12 @@
+@import './src/styles/variables';
+.directions {
+  &__item{
+    position: absolute;
+    height: 100px;
+    border: 2px solid $main-black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
