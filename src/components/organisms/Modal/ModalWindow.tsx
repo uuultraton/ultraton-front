@@ -4,16 +4,15 @@ import './ModalWindow.scss';
 import Modal from '@material-ui/core/Modal';
 import { Button, createStyles, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { IModalWindowProps } from '../../../interfaces/i-modal-window-props';
-import { hideModal } from '../../../stores/appStore/app.actions';
-import { IRootStore } from '../../../interfaces/i-root-store';
+import { finishDirectionStage, hideModal } from '../../../stores/appStore/app.actions';
+import { fetchSkillMatrix } from '../../../stores/skills/skills.actions';
 
 const ModalWindow = ({ open, direction }: IModalWindowProps): JSX.Element => {
   const rootPortal: HTMLElement = document.getElementById(
     'portal-root',
   ) as HTMLElement;
-  const {isModalOpen} = useSelector((store: IRootStore) => store.app);
   const dispatch = useDispatch();
   const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -29,7 +28,12 @@ const ModalWindow = ({ open, direction }: IModalWindowProps): JSX.Element => {
     }),
   );
   const classes = useStyles();
+  const handleYes = () => {
+    dispatch(finishDirectionStage());
+    dispatch(fetchSkillMatrix());
+    dispatch(hideModal());
 
+  };
   return ReactDOM.createPortal(
     <Modal
       open={open}
@@ -39,7 +43,7 @@ const ModalWindow = ({ open, direction }: IModalWindowProps): JSX.Element => {
       <div className={classes.paper}>
         <h2 id="simple-modal-title">Direction was chosen!</h2>
         <p id="simple-modal-description">
-          Are you sure, that you want to learn {direction}  direction?
+          Are you sure, that you want to learn {direction} direction?
         </p>
         <div className="simple-modal__buttons">
           <Button
@@ -51,7 +55,7 @@ const ModalWindow = ({ open, direction }: IModalWindowProps): JSX.Element => {
           >
             No
           </Button>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={handleYes}>
             Yes
           </Button>
         </div>

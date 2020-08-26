@@ -1,4 +1,4 @@
 export interface IBlock {
   posLeft: number;
-  name:string;
+  name: string;
 }

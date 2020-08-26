@@ -9,7 +9,7 @@ import validatePassword from '../../helpers/validatePassword';
 import validateEmail from '../../helpers/validateEmail';
 
 import API from '../../helpers/api';
-import IRegistrationResponse  from '../../interfaces/i-registrationResponce';
+import IRegistrationResponse from '../../interfaces/i-registrationResponce';
 
 const Registration = (): JSX.Element => {
   const [firstName, changeFirstName] = useState('');

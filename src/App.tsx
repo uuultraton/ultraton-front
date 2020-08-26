@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.scss';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
+
 import Header from './components/organisms/Header/Header';
 import MainPage from './pages/MainPage/MainPage';
 import LogIn from './pages/LogIn/LogIn';
