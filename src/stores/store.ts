@@ -9,9 +9,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   rootReducer,
   compose(
-    applyMiddleware(thunk, sagaMiddleware),
-    (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
-      (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(),
+    applyMiddleware(thunk, sagaMiddleware)
   ),
 );
 sagaMiddleware.run(rootSaga);
