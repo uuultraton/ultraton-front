@@ -8,6 +8,7 @@ import Header from './components/organisms/Header/Header';
 import MainPage from './pages/MainPage/MainPage';
 import LogIn from './pages/LogIn/LogIn';
 import PlayToLearn from './pages/PlayToLearn/PlayToLearn';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 import store from './stores/store';
 import Registration from './pages/Registration/Registration';
 import Footer from './components/organisms/Footer/Footer';
@@ -24,6 +25,7 @@ function App() {
             <Route path="/login" component={LogIn} />
             <Route path="/register" component={Registration} />
             <Route path="/play_to_learn" component={PlayToLearn} />
+            <Route path="/profile" component={ProfilePage} />
           </Switch>
           <Footer />
         </Router>

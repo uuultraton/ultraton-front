@@ -1,0 +1,17 @@
+.profile-about {
+  padding: 20px;
+  margin-top: 10px;
+  
+  &__name {
+    display: block;
+    text-align: center;
+    font-size: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #000;
+  }
+  
+  &__text {
+    margin: 0;
+    padding: 20px 0;
+  }
+}
