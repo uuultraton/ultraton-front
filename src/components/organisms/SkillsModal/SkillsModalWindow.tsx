@@ -7,53 +7,50 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
+import ReactDOM from 'react-dom';
+import './SkillsModalWindow.scss';
+import { connect, useDispatch } from 'react-redux';
+import { IModalWindowProps } from '../../../interfaces/i-modal-window-props';
+import {
+  finishDirectionStage,
+  hideModal,
+} from '../../../stores/appStore/app.actions';
+import { fetchSkillMatrix } from '../../../stores/skills/skills.actions';
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
+const SkillsModalWindow = ({ direction }: IModalWindowProps): JSX.Element => {
+  const rootPortal: HTMLElement = document.getElementById(
+    'portal-root',
+  ) as HTMLElement;
+  const dispatch = useDispatch();
 
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      width: '100%',
-      maxWidth: 360,
-      backgroundColor: theme.palette.background.paper,
-    },
-    paper: {
-      position: 'absolute',
-      width: 400,
-      backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
-      left: '34%',
-      top: '40%',
-    },
-    modal: {
-      height: '100vh',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-  }),
-);
-
-export default function SkillsModalWindow() {
+  const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+      root: {
+        width: '100%',
+        maxWidth: 360,
+        backgroundColor: theme.palette.background.paper,
+      },
+      paper: {
+        position: 'absolute',
+        width: 400,
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+        left: '34%',
+        top: '20%',
+      },
+      modal: {
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+    }),
+  );
   const classes = useStyles();
-  const [checked, setChecked] = React.useState([1]);
 
-  const [modalStyle] = React.useState(getModalStyle);
+  const [checked, setChecked] = React.useState([1]);
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -77,8 +74,14 @@ export default function SkillsModalWindow() {
     setChecked(newChecked);
   };
 
+  const handleYes = () => {
+    dispatch(finishDirectionStage());
+    dispatch(fetchSkillMatrix());
+    dispatch(hideModal());
+  };
+
   const body = (
-    <div style={modalStyle} className={classes.paper}>
+    <div className={classes.paper}>
       <h2 id="simple-modal-title">Choose cathegory in which you have skills</h2>
 
       <List dense className={classes.root}>
@@ -100,17 +103,11 @@ export default function SkillsModalWindow() {
         })}
       </List>
       <div className="simple-modal__buttons">
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            // dispatch(hideModal());
-          }}
-        >
-          No
+        <Button variant="contained" color="primary" onClick={handleClose}>
+          Cancel
         </Button>
-        <Button variant="contained" color="primary">
-          Yes
+        <Button variant="contained" color="primary" onClick={handleYes}>
+          Submit
         </Button>
       </div>
     </div>
@@ -131,4 +128,6 @@ export default function SkillsModalWindow() {
       </Modal>
     </div>
   );
-}
+};
+
+export default connect(null, null)(SkillsModalWindow);

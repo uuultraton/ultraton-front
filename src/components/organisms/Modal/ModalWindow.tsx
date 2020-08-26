@@ -6,7 +6,10 @@ import { Button, createStyles, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect, useDispatch } from 'react-redux';
 import { IModalWindowProps } from '../../../interfaces/i-modal-window-props';
-import { finishDirectionStage, hideModal } from '../../../stores/appStore/app.actions';
+import {
+  finishDirectionStage,
+  hideModal,
+} from '../../../stores/appStore/app.actions';
 import { fetchSkillMatrix } from '../../../stores/skills/skills.actions';
 
 const ModalWindow = ({ open, direction }: IModalWindowProps): JSX.Element => {
@@ -14,6 +17,7 @@ const ModalWindow = ({ open, direction }: IModalWindowProps): JSX.Element => {
     'portal-root',
   ) as HTMLElement;
   const dispatch = useDispatch();
+
   const useStyles = makeStyles((theme: Theme) =>
     createStyles({
       paper: {
@@ -23,16 +27,16 @@ const ModalWindow = ({ open, direction }: IModalWindowProps): JSX.Element => {
         border: '2px solid #000',
         padding: theme.spacing(2, 4, 3),
         left: '35%',
-        top: '40%',
+        top: '20%',
       },
     }),
   );
   const classes = useStyles();
+
   const handleYes = () => {
     dispatch(finishDirectionStage());
     dispatch(fetchSkillMatrix());
     dispatch(hideModal());
-
   };
   return ReactDOM.createPortal(
     <Modal
@@ -43,7 +47,9 @@ const ModalWindow = ({ open, direction }: IModalWindowProps): JSX.Element => {
       <div className={classes.paper}>
         <h2 id="simple-modal-title">Direction was chosen!</h2>
         <p id="simple-modal-description">
-          Are you sure, that you want to learn {direction} direction?
+          Are you sure, that you want to learn
+          {direction}
+          direction?
         </p>
         <div className="simple-modal__buttons">
           <Button
